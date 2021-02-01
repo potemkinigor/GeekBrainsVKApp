@@ -7,12 +7,25 @@
 
 import UIKit
 
+var users: [User] = []
+var groups: [Group] = []
+
 class UITabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+         for index in 0...3 {
+            let user = User(name: "Name", surname: "Surname \(index)", dayOfBirth: 30, monthsOfBirth: 10, yearOfBirth: 1990, gender: .male, avatar: UIImage(named: "userAvatar")!)
+            users.append(user)
+        }
+        
+        
+        for index in 0...10 {
+            let group = Group(name: "Group \(index)", description: "Just a simple group as any other", avatar: UIImage(named: "groupsAvatar")!, userIn: false)
+            groups.append(group)
+        }
+        
     }
     
 
