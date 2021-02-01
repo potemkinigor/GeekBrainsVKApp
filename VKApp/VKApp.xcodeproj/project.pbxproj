@@ -12,6 +12,14 @@
 		83B992EA25BC217A00EFAC50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B992E825BC217A00EFAC50 /* Main.storyboard */; };
 		83B992EC25BC218200EFAC50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B992EB25BC218200EFAC50 /* Assets.xcassets */; };
 		83B992EF25BC218200EFAC50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B992ED25BC218200EFAC50 /* LaunchScreen.storyboard */; };
+		CE7C74E525C7DD3800955EBF /* UITabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74E425C7DD3800955EBF /* UITabViewController.swift */; };
+		CE7C74E925C7E2BE00955EBF /* FriendsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74E825C7E2BE00955EBF /* FriendsListTableViewController.swift */; };
+		CE7C74ED25C7E41100955EBF /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74EB25C7E41100955EBF /* FriendsTableViewCell.swift */; };
+		CE7C74EE25C7E41100955EBF /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7C74EC25C7E41100955EBF /* FriendsTableViewCell.xib */; };
+		CE7C74F425C7E8A400955EBF /* FriendsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74F325C7E8A400955EBF /* FriendsCollectionViewController.swift */; };
+		CE7C74F825C7EB0800955EBF /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74F725C7EB0800955EBF /* GroupsTableViewController.swift */; };
+		CE7C750125C7EB6E00955EBF /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74FF25C7EB6E00955EBF /* GroupsTableViewCell.swift */; };
+		CE7C750225C7EB6E00955EBF /* GroupsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7C750025C7EB6E00955EBF /* GroupsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,14 @@
 		83B992EB25BC218200EFAC50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83B992EE25BC218200EFAC50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83B992F025BC218200EFAC50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7C74E425C7DD3800955EBF /* UITabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabViewController.swift; sourceTree = "<group>"; };
+		CE7C74E825C7E2BE00955EBF /* FriendsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTableViewController.swift; sourceTree = "<group>"; };
+		CE7C74EB25C7E41100955EBF /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		CE7C74EC25C7E41100955EBF /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
+		CE7C74F325C7E8A400955EBF /* FriendsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewController.swift; sourceTree = "<group>"; };
+		CE7C74F725C7EB0800955EBF /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		CE7C74FF25C7EB6E00955EBF /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
+		CE7C750025C7EB6E00955EBF /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +70,54 @@
 		83B992E125BC217A00EFAC50 /* VKApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE7C74E125C7DA1D00955EBF /* Storyboards */,
+				CE7C74E025C7DA0C00955EBF /* ViewControllers */,
 				83B992E225BC217A00EFAC50 /* AppDelegate.swift */,
-				83B992E625BC217A00EFAC50 /* ViewController.swift */,
-				83B992E825BC217A00EFAC50 /* Main.storyboard */,
 				83B992EB25BC218200EFAC50 /* Assets.xcassets */,
-				83B992ED25BC218200EFAC50 /* LaunchScreen.storyboard */,
 				83B992F025BC218200EFAC50 /* Info.plist */,
 			);
 			path = VKApp;
+			sourceTree = "<group>";
+		};
+		CE7C74E025C7DA0C00955EBF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				83B992E625BC217A00EFAC50 /* ViewController.swift */,
+				CE7C74E425C7DD3800955EBF /* UITabViewController.swift */,
+				CE7C74E825C7E2BE00955EBF /* FriendsListTableViewController.swift */,
+				CE7C74F325C7E8A400955EBF /* FriendsCollectionViewController.swift */,
+				CE7C74F725C7EB0800955EBF /* GroupsTableViewController.swift */,
+				CE7C74F125C7E42900955EBF /* CollectionCells */,
+				CE7C74F025C7E41A00955EBF /* TableCells */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CE7C74E125C7DA1D00955EBF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				83B992E825BC217A00EFAC50 /* Main.storyboard */,
+				83B992ED25BC218200EFAC50 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CE7C74F025C7E41A00955EBF /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C74EB25C7E41100955EBF /* FriendsTableViewCell.swift */,
+				CE7C74EC25C7E41100955EBF /* FriendsTableViewCell.xib */,
+				CE7C74FF25C7EB6E00955EBF /* GroupsTableViewCell.swift */,
+				CE7C750025C7EB6E00955EBF /* GroupsTableViewCell.xib */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		CE7C74F125C7E42900955EBF /* CollectionCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CollectionCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +179,9 @@
 			files = (
 				83B992EF25BC218200EFAC50 /* LaunchScreen.storyboard in Resources */,
 				83B992EC25BC218200EFAC50 /* Assets.xcassets in Resources */,
+				CE7C750225C7EB6E00955EBF /* GroupsTableViewCell.xib in Resources */,
 				83B992EA25BC217A00EFAC50 /* Main.storyboard in Resources */,
+				CE7C74EE25C7E41100955EBF /* FriendsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7C74F425C7E8A400955EBF /* FriendsCollectionViewController.swift in Sources */,
 				83B992E725BC217A00EFAC50 /* ViewController.swift in Sources */,
+				CE7C74E925C7E2BE00955EBF /* FriendsListTableViewController.swift in Sources */,
 				83B992E325BC217A00EFAC50 /* AppDelegate.swift in Sources */,
+				CE7C74F825C7EB0800955EBF /* GroupsTableViewController.swift in Sources */,
+				CE7C74ED25C7E41100955EBF /* FriendsTableViewCell.swift in Sources */,
+				CE7C74E525C7DD3800955EBF /* UITabViewController.swift in Sources */,
+				CE7C750125C7EB6E00955EBF /* GroupsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +347,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 77R3944333;
 				INFOPLIST_FILE = VKApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -301,6 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 77R3944333;
 				INFOPLIST_FILE = VKApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

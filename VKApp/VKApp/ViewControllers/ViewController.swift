@@ -31,7 +31,12 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
             self.present(alert, animated: true)
         } else if loginText == login && passwordText == password {
-            print("Вход разрешен")
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let targetTabBarController = storyBoard.instantiateViewController(identifier: "TabBarController")
+            self.present(targetTabBarController, animated: true, completion: nil)
+            
+            
         } else {
             let alert = UIAlertController(title: "Неверные данные", message: "Введите правильный логин и пароль", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
