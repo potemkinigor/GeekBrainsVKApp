@@ -9,9 +9,65 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var loginTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var enterButton: UIButton!
+    @IBOutlet var registerButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var login = "Geekbrains"
+    var password = "Geekbrains"
+    
+    @objc func hideKeyboard () {
+        self.scrollView?.endEditing(true)
+    }
+ 
+    @IBAction func enterButtonTap(_ sender: Any) {
+        let loginText = self.loginTextField.text
+        let passwordText = self.passwordTextField.text
+        
+        if loginText == "" || passwordText == "" {
+            let alert = UIAlertController(title: "Данные не заполнены", message: "Просьба ввести логин и пароль", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        } else if loginText == login && passwordText == password {
+            print("Вход разрешен")
+        } else {
+            let alert = UIAlertController(title: "Неверные данные", message: "Введите правильный логин и пароль", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        
+        hideKeyboard()
+        
+    }
+    
+    
+    @IBAction func registerButtonTap(_ sender: Any) {
+        print("Вы нажали кнопку регистрации")
+        hideKeyboard()
+    }
+    
+    @IBAction func forgetPasswordButtonTap(_ sender: Any) {
+        let alert = UIAlertController(title: "Восстановление пароля", message: "Ваш логин: \(login), пароль \(password)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let hideKeyboardGesture = UIGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+        
+        enterButton.layer.cornerRadius = 10
+        enterButton.layer.shadowRadius = 3
+        registerButton.layer.cornerRadius = 10
+        enterButton.layer.shadowRadius = 3
+        
+        
+        
     }
 
 
