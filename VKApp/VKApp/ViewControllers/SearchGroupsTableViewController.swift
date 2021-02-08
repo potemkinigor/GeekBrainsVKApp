@@ -1,5 +1,5 @@
 //
-//  FriendsListTableViewController.swift
+//  SearchGroupsTableViewController.swift
 //  VKApp
 //
 //  Created by User on 01.02.2021.
@@ -7,47 +7,39 @@
 
 import UIKit
 
-
-
-class FriendsListTableViewController: UITableViewController {
+class SearchGroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "friendsCell")
+        tableView.register(UINib(nibName: "GroupsTableViewCell", bundle: nil), forCellReuseIdentifier: "searchGroupsCell")
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return users.count
+        return groups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchGroupsCell", for: indexPath)
         
         for index in indexPath {
-            cell.imageView?.image = users[index].avatar
-            cell.textLabel?.text = users[index].name + " " + users[index].surname
+            cell.imageView?.image = groups[index].avatar
+            cell.textLabel?.text = groups[index].name
         }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "FriendsCollectionView")
-        vc.modalPresentationStyle = .automatic
-        self.navigationController?.pushViewController(vc, animated: true)
+        groups[indexPath.row].userIn = true
     }
     
-
 
     /*
     // Override to support conditional editing of the table view.
