@@ -9,9 +9,15 @@ import UIKit
 
 class GroupsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var groupsAvatarView: GroupsAvatarView!
+    @IBOutlet weak var numberOfLikes: UILabel!
+    @IBOutlet weak var likeButton: LikeControlButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

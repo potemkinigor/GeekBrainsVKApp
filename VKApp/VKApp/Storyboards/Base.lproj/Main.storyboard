@@ -149,7 +149,7 @@
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="123.88392857142857"/>
         </scene>
-        <!--Groups Table View Controller-->
+        <!--Мои группы-->
         <scene sceneID="1Pw-jZ-RSV">
             <objects>
                 <tableViewController restorationIdentifier="groupsList" storyboardIdentifier="groupsList" id="NWH-hY-IMy" customClass="GroupsTableViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -172,7 +172,7 @@
                             <outlet property="delegate" destination="NWH-hY-IMy" id="cuB-tW-fKD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dgJ-Hu-ffw">
+                    <navigationItem key="navigationItem" title="Мои группы" id="dgJ-Hu-ffw">
                         <barButtonItem key="rightBarButtonItem" title="Поиск" image="magnifyingglass" catalog="system" id="iOv-td-F5B">
                             <connections>
                                 <action selector="searchGroups:" destination="NWH-hY-IMy" id="06Y-Gw-XOB"/>
@@ -184,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="2704" y="497"/>
         </scene>
-        <!--Search Groups Table View Controller-->
+        <!--Поиск групп-->
         <scene sceneID="eKB-Vg-Izc">
             <objects>
-                <tableViewController storyboardIdentifier="searchGroups" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L7A-3n-KWp" customClass="SearchGroupsTableViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="searchGroups" title="Поиск групп" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L7A-3n-KWp" customClass="SearchGroupsTableViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sQb-bT-kS4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="1890" y="497"/>
         </scene>
-        <!--Friends List Table View Controller-->
+        <!--Друзья-->
         <scene sceneID="U1w-gS-wdj">
             <objects>
                 <tableViewController storyboardIdentifier="FriendsTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OUZ-mj-Ooe" customClass="FriendsListTableViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -256,7 +256,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="reuseIdentifier" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="AzT-GQ-1Oq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="reuseIdentifier" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendsReuseIdentifier" id="AzT-GQ-1Oq">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AzT-GQ-1Oq" id="QkL-SF-Tdk">
@@ -270,7 +270,7 @@
                             <outlet property="delegate" destination="OUZ-mj-Ooe" id="XnK-HY-p3e"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HoZ-Es-mTL"/>
+                    <navigationItem key="navigationItem" title="Друзья" id="HoZ-Es-mTL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dqi-7D-kcf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

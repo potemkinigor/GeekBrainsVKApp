@@ -14,9 +14,7 @@ var userGroups: [Group] = []
 class GroupsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
-        
         updateView()
-    
     }
 
     override func viewDidLoad() {
@@ -29,7 +27,7 @@ class GroupsTableViewController: UITableViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "searchGroups")
-        vc.modalPresentationStyle = .automatic
+        vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
     // MARK: - Table view data source
@@ -46,10 +44,13 @@ class GroupsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupsCell", for: indexPath) as! GroupsTableViewCell
         
-        cell.imageView?.image = userGroups[indexPath.row].avatar
-        cell.textLabel?.text = userGroups[indexPath.row].name
+        cell.groupNameLabel.text = userGroups[indexPath.row].name
+        cell.groupsAvatarView.groupAvatar.image = userGroups[indexPath.row].avatar
+        cell.numberOfLikes.text = String(userGroups[indexPath.row].likes)
+        cell.likeButton.groupNumber = indexPath.row
+        cell.likeButton.isLiked = groups[indexPath.row].liked
         
         return cell
     }

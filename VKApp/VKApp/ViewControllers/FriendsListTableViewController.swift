@@ -13,7 +13,7 @@ class FriendsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "friendsCell")
+        tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "friendsReuseIdentifier")
     }
 
     // MARK: - Table view data source
@@ -30,13 +30,11 @@ class FriendsListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendsReuseIdentifier", for: indexPath) as! FriendsTableViewCell
         
-        for index in indexPath {
-            cell.imageView?.image = users[index].avatar
-            cell.textLabel?.text = users[index].name + " " + users[index].surname
-        }
-        
+        cell.userName.text = users[indexPath.row].name + " " + users[indexPath.row].surname
+        cell.userAvatarView.avatarImage.image = users[indexPath.row].avatar
+
         return cell
     }
     

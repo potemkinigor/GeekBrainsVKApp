@@ -22,7 +22,7 @@ class UITabViewController: UITabBarController {
         
         
         for index in 0...10 {
-            let group = Group(name: "Group \(index)", description: "Just a simple group as any other", avatar: UIImage(named: "groupsAvatar")!, userIn: false)
+            let group = Group(name: "Group \(index)", description: "Just a simple group as any other", avatar: UIImage(named: "groupsAvatar")!, userIn: false, likes: index * 4, liked: false)
             groups.append(group)
         }
         
