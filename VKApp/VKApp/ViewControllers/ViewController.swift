@@ -49,7 +49,6 @@ class ViewController: UIViewController {
     
     
     @IBAction func registerButtonTap(_ sender: Any) {
-        print("Вы нажали кнопку регистрации")
         hideKeyboard()
     }
     

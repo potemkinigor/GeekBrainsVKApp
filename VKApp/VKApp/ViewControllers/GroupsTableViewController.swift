@@ -48,9 +48,6 @@ class GroupsTableViewController: UITableViewController {
         
         cell.groupNameLabel.text = userGroups[indexPath.row].name
         cell.groupsAvatarView.groupAvatar.image = userGroups[indexPath.row].avatar
-        cell.numberOfLikes.text = String(userGroups[indexPath.row].likes)
-        cell.likeButton.groupNumber = indexPath.row
-        cell.likeButton.isLiked = groups[indexPath.row].liked
         
         return cell
     }

@@ -11,9 +11,16 @@ class LikeControlButton: UIControl {
 
     let heartBezierPath = UIBezierPath()
     let maskLayer = CAShapeLayer()
-    var isLiked = false
-    var groupNumber = 0
-
+    let borderLayer = CALayer()
+    var newsIndex = 0
+    
+    var isLiked = false {
+        didSet {
+            self.sendActions(for: .valueChanged)
+        }
+    }
+    let label = UILabel()
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
     
@@ -55,8 +62,8 @@ class LikeControlButton: UIControl {
             self.heartBezierPath.fill()
             setNeedsDisplay()
             
-            groups[groupNumber].likes -= 1
-            groups[groupNumber].liked = false
+            news[newsIndex].likesCount -= 1
+            news[newsIndex].isLiked = false
             
             isLiked = false
             
@@ -65,8 +72,8 @@ class LikeControlButton: UIControl {
             self.heartBezierPath.fill()
             setNeedsDisplay()
             
-            groups[groupNumber].likes += 1
-            groups[groupNumber].liked = true
+            news[newsIndex].likesCount += 1
+            news[newsIndex].isLiked = true
             
             isLiked = true
         }

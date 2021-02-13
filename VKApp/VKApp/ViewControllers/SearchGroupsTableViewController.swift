@@ -30,9 +30,6 @@ class SearchGroupsTableViewController: UITableViewController {
         
         cell.groupsAvatarView.groupAvatar.image = groups[indexPath.row].avatar
         cell.groupNameLabel.text = groups[indexPath.row].name
-        cell.numberOfLikes.text = String(groups[indexPath.row].likes)
-        cell.likeButton.groupNumber = indexPath.row
-        cell.likeButton.isLiked = groups[indexPath.row].liked
         
         return cell
     }
