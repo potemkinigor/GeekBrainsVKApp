@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5B3-TD-uQC">
-                        <rect key="frame" x="66" y="12" width="152" height="21"/>
+                        <rect key="frame" x="66" y="12" width="227" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -58,30 +58,12 @@
                             <outlet property="groupAvatar" destination="KbS-bU-PT0" id="9IA-RG-xaH"/>
                         </connections>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seZ-hQ-2e6" customClass="LikeControlButton" customModule="VKApp" customModuleProvider="target">
-                        <rect key="frame" x="287" y="7" width="30" height="30"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="J7V-Vu-N87"/>
-                            <constraint firstAttribute="height" constant="30" id="Zjx-li-iAK"/>
-                        </constraints>
-                    </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDs-Ua-by4">
-                        <rect key="frame" x="267" y="12" width="18" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gDs-Ua-by4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="8gu-Sp-e2D"/>
-                    <constraint firstItem="seZ-hQ-2e6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="AH4-KZ-aSs"/>
                     <constraint firstItem="gI5-lA-FUe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="C4n-Z5-pQ2"/>
-                    <constraint firstAttribute="trailing" secondItem="seZ-hQ-2e6" secondAttribute="trailing" constant="3" id="IDL-53-Hg2"/>
+                    <constraint firstAttribute="trailing" secondItem="5B3-TD-uQC" secondAttribute="trailing" constant="27" id="Tab-G1-We2"/>
                     <constraint firstItem="gI5-lA-FUe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="XeK-ob-pyw"/>
                     <constraint firstItem="5B3-TD-uQC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="bTK-bT-z0c"/>
-                    <constraint firstItem="gDs-Ua-by4" firstAttribute="leading" secondItem="5B3-TD-uQC" secondAttribute="trailing" constant="49" id="dPr-O3-e87"/>
-                    <constraint firstItem="seZ-hQ-2e6" firstAttribute="leading" secondItem="gDs-Ua-by4" secondAttribute="trailing" constant="2" id="gRg-Ah-GYK"/>
                     <constraint firstItem="5B3-TD-uQC" firstAttribute="leading" secondItem="KbS-bU-PT0" secondAttribute="trailing" constant="20" id="pZt-r9-U5Y"/>
                 </constraints>
             </tableViewCellContentView>
@@ -89,8 +71,6 @@
             <connections>
                 <outlet property="groupNameLabel" destination="5B3-TD-uQC" id="gMt-D7-ZmR"/>
                 <outlet property="groupsAvatarView" destination="gI5-lA-FUe" id="1wX-iv-edb"/>
-                <outlet property="likeButton" destination="seZ-hQ-2e6" id="3dx-5Z-bYh"/>
-                <outlet property="numberOfLikes" destination="gDs-Ua-by4" id="TDa-4I-LQ7"/>
             </connections>
             <point key="canvasLocation" x="-84.057971014492765" y="109.82142857142857"/>
         </tableViewCell>

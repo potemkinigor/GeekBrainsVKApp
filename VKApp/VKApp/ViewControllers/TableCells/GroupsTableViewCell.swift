@@ -11,8 +11,6 @@ class GroupsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupsAvatarView: GroupsAvatarView!
-    @IBOutlet weak var numberOfLikes: UILabel!
-    @IBOutlet weak var likeButton: LikeControlButton!
     
     
     override func awakeFromNib() {
