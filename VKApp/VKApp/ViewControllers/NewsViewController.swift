@@ -14,12 +14,7 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
 
         newsCollectionView.register(UINib(nibName: "NewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "newsCollectionCiewCellReusableIdentifyer")
-        
-                
     }
-    
-
-
 }
 
 extension NewsViewController: UICollectionViewDataSource {
@@ -38,7 +33,6 @@ extension NewsViewController: UICollectionViewDataSource {
         cell.newsText.text = news[indexPath.row].text
         cell.mediaDataArray.removeAll()
         cell.mediaDataArray = news[indexPath.row].images
-        
         cell.likesCount.text = String(news[indexPath.row].likesCount)
         cell.viewsCount.text = String(news[indexPath.row].viewsCount)
         cell.repostsCount.text = String(news[indexPath.row].repostsCount)
@@ -47,14 +41,10 @@ extension NewsViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-
 }
 
 extension NewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
         return CGSize(width: collectionView.frame.width, height: 249)
     }
     
@@ -65,6 +55,8 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         news[indexPath.row].viewsCount += 1
     }
+    
+
 
     
 }

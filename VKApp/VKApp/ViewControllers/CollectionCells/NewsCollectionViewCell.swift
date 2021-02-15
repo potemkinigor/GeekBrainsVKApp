@@ -27,6 +27,8 @@ class NewsCollectionViewCell: UICollectionViewCell {
         self.mediaCollectionView.delegate = self
         self.mediaCollectionView.dataSource = self
         self.mediaCollectionView.isScrollEnabled = false
+        
+        newsLikes.addTarget(self, action: #selector(updateLikeButton), for: .valueChanged)
          
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.gray.cgColor
@@ -34,16 +36,22 @@ class NewsCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOffset = CGSize(width: 10, height: 10)
                 
         self.layer.cornerRadius = 5
-        
-        newsLikes.addTarget(self, action: #selector(updateView), for: .valueChanged)
-        
+
         mediaCollectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageReusableIdentifyer")
     }
     
-    @objc func updateView () {
+    @objc func updateLikeButton () {
+        UIView.transition(with: newsLikes,
+                          duration: 2,
+                          options: .transitionFlipFromBottom,
+                          animations: {
+                          }
+        )
+        
         likesCount.text = "\(news[newsLikes.newsIndex].likesCount)"
+        
     }
-
+    
 }
 
 extension NewsCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -54,8 +62,8 @@ extension NewsCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = mediaCollectionView.dequeueReusableCell(withReuseIdentifier: "imageReusableIdentifyer", for: indexPath) as! ImageCollectionViewCell
-        
-        cell.image.image = mediaDataArray[indexPath.row]
+    
+        cell.image.image = self.mediaDataArray[indexPath.row]
     
         return cell
     }
@@ -82,9 +90,16 @@ extension NewsCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
             }
         }
         
-        
-        
         return CGSize(width: requiredWidth, height: requiredHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0
+        opacityAnimation.toValue = 1
+        opacityAnimation.duration = 3
+
+        cell.layer.add(opacityAnimation, forKey: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -95,5 +110,13 @@ extension NewsCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
         return 2
     }
     
+    override func prepareForReuse() {
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0
+        opacityAnimation.toValue = 1
+        opacityAnimation.duration = 5
+        
+        self.layer.add(opacityAnimation, forKey: nil)
+    }
     
 }

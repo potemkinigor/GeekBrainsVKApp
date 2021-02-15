@@ -33,8 +33,8 @@ class ViewController: UIViewController {
         } else if loginText == login && passwordText == password {
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let targetTabBarController = storyBoard.instantiateViewController(identifier: "TabBarController")
-            self.present(targetTabBarController, animated: true, completion: nil)
+            let loadingVC = storyBoard.instantiateViewController(identifier: "loadingVC")
+            self.present(loadingVC, animated: true, completion: nil)
             
             
         } else {

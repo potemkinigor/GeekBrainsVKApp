@@ -77,8 +77,8 @@
                             <constraint firstAttribute="height" constant="27" id="MuP-Jh-uLc"/>
                         </constraints>
                     </view>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h7I-uM-Kxz">
-                        <rect key="frame" x="0.0" y="27" width="285" height="174"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h7I-uM-Kxz">
+                        <rect key="frame" x="0.0" y="27" width="289" height="174"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="174" id="Yys-O6-9S8"/>
