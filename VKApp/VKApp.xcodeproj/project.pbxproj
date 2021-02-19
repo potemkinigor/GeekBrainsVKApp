@@ -33,6 +33,8 @@
 		CE7C751D25C7FE0100955EBF /* GroupsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7C751B25C7FE0100955EBF /* GroupsTableViewCell.xib */; };
 		CE7DAC3325D7E20C006407C8 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DAC3125D7E20C006407C8 /* ImageCollectionViewCell.swift */; };
 		CE7DAC3425D7E20C006407C8 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7DAC3225D7E20C006407C8 /* ImageCollectionViewCell.xib */; };
+		CE7DAC3C25D7F1B5006407C8 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DAC3B25D7F1B5006407C8 /* LoadingIndicator.swift */; };
+		CE7DAC4325D806BA006407C8 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DAC4225D806BA006407C8 /* LoadingViewController.swift */; };
 		CE7DE1FA25D3D8170023C1F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE1F925D3D8170023C1F1 /* Constants.swift */; };
 		CE7DE1FD25D3D8E80023C1F1 /* AlphabetFriendsSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE1FC25D3D8E80023C1F1 /* AlphabetFriendsSearch.swift */; };
 		CED0D17625D405E8004DFCDF /* FriendsUITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0D17525D405E8004DFCDF /* FriendsUITableViewHeaderFooterView.swift */; };
@@ -68,6 +70,8 @@
 		CE7C751B25C7FE0100955EBF /* GroupsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupsTableViewCell.xib; sourceTree = "<group>"; };
 		CE7DAC3125D7E20C006407C8 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE7DAC3225D7E20C006407C8 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		CE7DAC3B25D7F1B5006407C8 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		CE7DAC4225D806BA006407C8 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		CE7DE1F925D3D8170023C1F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE7DE1FC25D3D8E80023C1F1 /* AlphabetFriendsSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetFriendsSearch.swift; sourceTree = "<group>"; };
 		CED0D17525D405E8004DFCDF /* FriendsUITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsUITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				CE14BCA125D12B5200C5F127 /* GroupsAvatarView.swift */,
 				CE14BCAB25D140AA00C5F127 /* LikeControlButton.swift */,
 				CE7DE1FC25D3D8E80023C1F1 /* AlphabetFriendsSearch.swift */,
+				CE7DAC3B25D7F1B5006407C8 /* LoadingIndicator.swift */,
 			);
 			path = "Custom view elements";
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				CE7C74F725C7EB0800955EBF /* GroupsTableViewController.swift */,
 				CE7C750525C7F04000955EBF /* SearchGroupsTableViewController.swift */,
 				CE1C2B0725D545F400605FA6 /* NewsViewController.swift */,
+				CE7DAC4225D806BA006407C8 /* LoadingViewController.swift */,
 				CE7C74F125C7E42900955EBF /* CollectionCells */,
 				CE7C74F025C7E41A00955EBF /* TableCells */,
 				CE14BC9225D110A800C5F127 /* Custom view elements */,
@@ -270,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7DAC3C25D7F1B5006407C8 /* LoadingIndicator.swift in Sources */,
 				CE7C750F25C7F27A00955EBF /* Group.swift in Sources */,
 				CE7C74F425C7E8A400955EBF /* FriendsCollectionViewController.swift in Sources */,
 				CE7DE1FD25D3D8E80023C1F1 /* AlphabetFriendsSearch.swift in Sources */,
@@ -279,6 +286,7 @@
 				CE1C2B0425D5449100605FA6 /* NewsCollectionViewCell.swift in Sources */,
 				CED0D17625D405E8004DFCDF /* FriendsUITableViewHeaderFooterView.swift in Sources */,
 				CE14BCA225D12B5200C5F127 /* GroupsAvatarView.swift in Sources */,
+				CE7DAC4325D806BA006407C8 /* LoadingViewController.swift in Sources */,
 				CE14BCAC25D140AA00C5F127 /* LikeControlButton.swift in Sources */,
 				83B992E725BC217A00EFAC50 /* ViewController.swift in Sources */,
 				CE7C74E925C7E2BE00955EBF /* FriendsListViewController.swift in Sources */,

@@ -36,4 +36,17 @@ class UserAvatarView: UIView {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 2, animations: {
+            let scale = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self.transform = scale
+        }, completion: {_ in
+            UIView.animate(withDuration: 5, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, animations: {
+                let scale = CGAffineTransform(scaleX: 1, y: 1)
+                self.transform = scale
+            })
+        })
+    }
+    
+    
 }

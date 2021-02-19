@@ -49,6 +49,14 @@ class UITabViewController: UITabBarController {
         images.remove(at: 0)
         
         news.append(NewsPost(text: "One more news to make it right", images: images, likesCount: 5, isLiked: true, viewsCount: 35, repostsCount: 10, commentsCount: 3))
+        news.append(NewsPost(text: "One more news to make it right", images: images, likesCount: 5, isLiked: true, viewsCount: 35, repostsCount: 10, commentsCount: 3))
+        news.append(NewsPost(text: "One more news to make it right", images: images, likesCount: 5, isLiked: true, viewsCount: 35, repostsCount: 10, commentsCount: 3))
+        news.append(NewsPost(text: "One more news to make it right", images: images, likesCount: 5, isLiked: true, viewsCount: 35, repostsCount: 10, commentsCount: 3))
+        
+        news.append(NewsPost(text: "One more news to make it right", images: images, likesCount: 5, isLiked: true, viewsCount: 35, repostsCount: 10, commentsCount: 3))
+        news.append(NewsPost(text: "One more news to make it right", images: images, likesCount: 5, isLiked: true, viewsCount: 35, repostsCount: 10, commentsCount: 3))
+        news.append(NewsPost(text: "One more news to make it right", images: images, likesCount: 5, isLiked: true, viewsCount: 35, repostsCount: 10, commentsCount: 3))
+        
     }
 
     func updateFrindsList () {
