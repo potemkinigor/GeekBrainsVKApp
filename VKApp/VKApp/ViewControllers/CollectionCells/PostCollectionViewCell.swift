@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsCollectionViewCell: UICollectionViewCell {
+class PostCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var newsText: UILabel!
     @IBOutlet weak var mediaCollectionView: UICollectionView!
@@ -21,13 +21,15 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     var mediaDataArray: [UIImage] = []
     
+    var delegate: SetOfImagesDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.mediaCollectionView.delegate = self
         self.mediaCollectionView.dataSource = self
         self.mediaCollectionView.isScrollEnabled = false
-        
+
         newsLikes.addTarget(self, action: #selector(updateLikeButton), for: .valueChanged)
          
         self.layer.borderWidth = 1
@@ -54,7 +56,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
 }
 
-extension NewsCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension PostCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return mediaDataArray.count
@@ -117,6 +119,21 @@ extension NewsCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
         opacityAnimation.duration = 5
         
         self.layer.add(opacityAnimation, forKey: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewcontroller = storyboard.instantiateViewController(withIdentifier: "imageViewer")
+        viewcontroller.modalPresentationStyle = .fullScreen
+        
+        self.window?.rootViewController?.present(viewcontroller, animated: true, completion: nil)
+        
+        self.delegate = viewcontroller as? SetOfImagesDelegate
+        
+        delegate?.passedSetOfImages(mediaDataArray)
+        delegate?.passedNumberOfPickedImage(indexPath.row)
+
+        
     }
     
 }
