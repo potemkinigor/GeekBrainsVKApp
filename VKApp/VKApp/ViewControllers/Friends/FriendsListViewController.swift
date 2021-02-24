@@ -24,6 +24,8 @@ class FriendsListViewController: UIViewController {
     var presentedListOfFriends: [[User]] = [[]]
     var presentedSectionsNames: [Character] = []
     
+    var delegate: PassFriendInforamtionDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,6 +139,10 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
         self.navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        delegate = vc as? PassFriendInforamtionDelegate
+        
+        delegate?.passedFriendData(friends[indexPath.row])
     }
     
     // MARK: - Table view delegate
