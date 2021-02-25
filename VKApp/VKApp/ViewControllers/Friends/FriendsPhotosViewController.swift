@@ -11,8 +11,10 @@ import UIKit
 class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,  PassFriendInforamtionDelegate {
     
     @IBOutlet var photosCollectionView: UICollectionView!
+    var transitionDelegate = ViewControllerTransitionDelegate()
     var friend: User!
     var delegate: SetOfImagesDelegate!
+    var coordinatesArray: [(Int, Int, Int, Int)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +23,11 @@ class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, U
         
         photosCollectionView.delegate = self
         photosCollectionView.dataSource = self
+        
+        coordinatesArray.removeAll()
 
     }
+    
     
     func passedFriendData(_ friendPassed: User) {
         friend = friendPassed
@@ -45,14 +50,29 @@ class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendPhotoReusableCell", for: indexPath) as! FriendsPhotosCollectionViewCell
         
         cell.friendImage.image = friend.images[indexPath.row]
+        
+        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+        coordinatesArray.append((Int(attributes?.frame.origin.x ?? 0), Int(attributes?.frame.origin.y ?? 0), Int(attributes?.frame.height ?? 0), Int(attributes?.frame.width ?? 0)))
+        
+        print(coordinatesArray)
     
         return cell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewcontroller = storyboard.instantiateViewController(withIdentifier: "imageViewer")
         viewcontroller.modalPresentationStyle = .fullScreen
+        
+        viewcontroller.transitioningDelegate = transitionDelegate
+        
+        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+
+        transitionDelegate.photoXPosition = Int(attributes?.frame.origin.x ?? 0)
+        transitionDelegate.photoYPosition = Int(attributes?.frame.origin.y ?? 0)
+        transitionDelegate.photoHeight = Int(attributes?.frame.height ?? 0)
+        transitionDelegate.photoWidth = Int(attributes?.frame.width ?? 0)
 
         self.present(viewcontroller, animated: true, completion: nil)
         
@@ -60,14 +80,12 @@ class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, U
         
         delegate?.passedSetOfImages(friend.images)
         delegate?.passedNumberOfPickedImage(indexPath.row)
+        delegate?.passedSetOfCoordinates(coordinatesArray)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let requiredWidth = 700
-        let requiredHeight = 700
-        
-        return CGSize(width: requiredWidth, height: requiredHeight)
+        return CGSize(width: ((collectionView.frame.width - 15) / 2), height: 200)
     }
     
 }

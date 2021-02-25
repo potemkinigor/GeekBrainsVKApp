@@ -28,6 +28,7 @@ class GroupsTableViewController: UITableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "searchGroups")
         vc.modalPresentationStyle = .fullScreen
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
     // MARK: - Table view data source

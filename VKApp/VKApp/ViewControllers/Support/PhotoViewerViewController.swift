@@ -8,12 +8,15 @@
 import UIKit
 
 class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
-
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var headTextLabel: UILabel!
     var imagesArray: [UIImage] = []
+    var coordinatesArray: [(Int, Int, Int, Int)] = []
     var numberOfCurrentPresentedPhoto: Int = 0
-    var interactiveAnimator: UIViewPropertyAnimator!
+    
+    func passedSetOfCoordinates(_ coordinates: [(Int, Int, Int, Int)]) {
+        self.coordinatesArray = coordinates
+    }
 
     func passedSetOfImages(_ images: [UIImage]) {
         imagesArray = images
@@ -29,8 +32,7 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
         super.viewDidLoad()
         
         addGestureRecognezers()
-        
-        
+   
     }
     
     @IBAction func pushBack(_ sender: Any) {
@@ -91,6 +93,7 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
         }
         
         headTextLabel.text = "Фото \(numberOfCurrentPresentedPhoto + 1) из \(imagesArray.count)"
+        updatePhotoCoordinates()
     }
     
     @objc func handlePhotoSwipeLeft (_ sender: UIPanGestureRecognizer) {
@@ -98,6 +101,7 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
             numberOfCurrentPresentedPhoto += 1
             animatedNextPhoto()
         }
+        updatePhotoCoordinates()
     }
     
     @objc func handlePhotoSwipeRight (_ sender: UISwipeGestureRecognizer) {
@@ -107,6 +111,7 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
         }
         
         headTextLabel.text = "Фото \(numberOfCurrentPresentedPhoto + 1) из \(imagesArray.count)"
+        updatePhotoCoordinates()
     }
     
     @objc func handlePhotoSwipeDown (_ sender: UISwipeGestureRecognizer) {
@@ -141,6 +146,7 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
                                     self.photoImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
                                     newImage.removeFromSuperview()
                                 })
+        updatePhotoCoordinates()
     }
     
     func animatedPreviousPhoto () {
@@ -161,7 +167,7 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: { [self] in
                                         self.photoImageView.center.x -= photoImageView.frame.width
                                     })
-                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: { [self] in
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
                                         newImage.transform = CGAffineTransform(scaleX: 1, y: 1)
                                     })
                                 },
@@ -170,9 +176,17 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
                                     self.photoImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
                                     newImage.removeFromSuperview()
                                 })
+        updatePhotoCoordinates()
+    }
+    
+    func updatePhotoCoordinates() {
+        guard let transitionDelegate = self.transitioningDelegate as? ViewControllerTransitionDelegate else { return }
+        
+        transitionDelegate.updatePhotoParameters(photoXPosition: coordinatesArray[numberOfCurrentPresentedPhoto].0, photoYPosition: coordinatesArray[numberOfCurrentPresentedPhoto].1, photoHeight: coordinatesArray[numberOfCurrentPresentedPhoto].2, photoWidth: coordinatesArray[numberOfCurrentPresentedPhoto].3)
     }
 
 }
+
 
 extension PhotoViewerViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -182,5 +196,6 @@ extension PhotoViewerViewController: UIGestureRecognizerDelegate {
 
 protocol SetOfImagesDelegate {
     func passedSetOfImages (_ images: [UIImage])
+    func passedSetOfCoordinates(_ coordinates: [(Int, Int, Int, Int)])
     func passedNumberOfPickedImage (_ number: Int)
 }

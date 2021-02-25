@@ -23,6 +23,13 @@
 		CE59069F25E1165100CF67C2 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59069E25E1165100CF67C2 /* PhotoViewerViewController.swift */; };
 		CE5906A525E1299700CF67C2 /* FriendsPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5906A325E1299700CF67C2 /* FriendsPhotosCollectionViewCell.swift */; };
 		CE5906A625E1299700CF67C2 /* FriendsPhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5906A425E1299700CF67C2 /* FriendsPhotosCollectionViewCell.xib */; };
+		CE68CF7A25E62FDF00637708 /* ViewControlleSimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68CF7925E62FDF00637708 /* ViewControlleSimpleTransition.swift */; };
+		CE68CF7D25E6351400637708 /* ViewControlleSimpleDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68CF7C25E6351400637708 /* ViewControlleSimpleDismiss.swift */; };
+		CE68CF8025E635BD00637708 /* ViewControllerTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68CF7F25E635BD00637708 /* ViewControllerTransitionDelegate.swift */; };
+		CE68CF8B25E63F6300637708 /* NavigationControllerAnimationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68CF8A25E63F6300637708 /* NavigationControllerAnimationPush.swift */; };
+		CE68CF8F25E63FC500637708 /* NavigationControllerAnimationPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68CF8E25E63FC500637708 /* NavigationControllerAnimationPop.swift */; };
+		CE68CF9925E68FED00637708 /* CustomUiNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68CF9825E68FED00637708 /* CustomUiNavigationController.swift */; };
+		CE68CF9D25E6977200637708 /* UINavigationControllerInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE68CF9C25E6977200637708 /* UINavigationControllerInteractiveTransition.swift */; };
 		CE7C74E525C7DD3800955EBF /* UITabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74E425C7DD3800955EBF /* UITabViewController.swift */; };
 		CE7C74E925C7E2BE00955EBF /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74E825C7E2BE00955EBF /* FriendsListViewController.swift */; };
 		CE7C74ED25C7E41100955EBF /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C74EB25C7E41100955EBF /* FriendsTableViewCell.swift */; };
@@ -62,6 +69,13 @@
 		CE59069E25E1165100CF67C2 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		CE5906A325E1299700CF67C2 /* FriendsPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE5906A425E1299700CF67C2 /* FriendsPhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsPhotosCollectionViewCell.xib; sourceTree = "<group>"; };
+		CE68CF7925E62FDF00637708 /* ViewControlleSimpleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControlleSimpleTransition.swift; sourceTree = "<group>"; };
+		CE68CF7C25E6351400637708 /* ViewControlleSimpleDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControlleSimpleDismiss.swift; sourceTree = "<group>"; };
+		CE68CF7F25E635BD00637708 /* ViewControllerTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionDelegate.swift; sourceTree = "<group>"; };
+		CE68CF8A25E63F6300637708 /* NavigationControllerAnimationPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerAnimationPush.swift; sourceTree = "<group>"; };
+		CE68CF8E25E63FC500637708 /* NavigationControllerAnimationPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerAnimationPop.swift; sourceTree = "<group>"; };
+		CE68CF9825E68FED00637708 /* CustomUiNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUiNavigationController.swift; sourceTree = "<group>"; };
+		CE68CF9C25E6977200637708 /* UINavigationControllerInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerInteractiveTransition.swift; sourceTree = "<group>"; };
 		CE7C74E425C7DD3800955EBF /* UITabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabViewController.swift; sourceTree = "<group>"; };
 		CE7C74E825C7E2BE00955EBF /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		CE7C74EB25C7E41100955EBF /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,9 +192,40 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		CE68CF7725E62FC200637708 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				CE68CF8725E63DD400637708 /* ViewController */,
+				CE68CF8625E63DC900637708 /* NavigationController */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		CE68CF8625E63DC900637708 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				CE68CF9825E68FED00637708 /* CustomUiNavigationController.swift */,
+				CE68CF8A25E63F6300637708 /* NavigationControllerAnimationPush.swift */,
+				CE68CF8E25E63FC500637708 /* NavigationControllerAnimationPop.swift */,
+				CE68CF9C25E6977200637708 /* UINavigationControllerInteractiveTransition.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		CE68CF8725E63DD400637708 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE68CF7F25E635BD00637708 /* ViewControllerTransitionDelegate.swift */,
+				CE68CF7925E62FDF00637708 /* ViewControlleSimpleTransition.swift */,
+				CE68CF7C25E6351400637708 /* ViewControlleSimpleDismiss.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CE7C74E025C7DA0C00955EBF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE68CF7725E62FC200637708 /* Animations */,
 				CE1C2B0725D545F400605FA6 /* NewsViewController.swift */,
 				CE59069425DFBC8F00CF67C2 /* Intro */,
 				CE59069225DFBC6B00CF67C2 /* Friends */,
@@ -319,25 +364,32 @@
 				CE59069F25E1165100CF67C2 /* PhotoViewerViewController.swift in Sources */,
 				CE7C74F425C7E8A400955EBF /* FriendsPhotosViewController.swift in Sources */,
 				CE7DE1FD25D3D8E80023C1F1 /* AlphabetFriendsSearch.swift in Sources */,
+				CE68CF7A25E62FDF00637708 /* ViewControlleSimpleTransition.swift in Sources */,
 				CE1C2B0825D545F400605FA6 /* NewsViewController.swift in Sources */,
 				CE14BCA925D1360800C5F127 /* Extentions.swift in Sources */,
 				CE1C2B1225D54D7A00605FA6 /* NewsPost.swift in Sources */,
+				CE68CF8B25E63F6300637708 /* NavigationControllerAnimationPush.swift in Sources */,
 				CE1C2B0425D5449100605FA6 /* PostCollectionViewCell.swift in Sources */,
 				CED0D17625D405E8004DFCDF /* FriendsUITableViewHeaderFooterView.swift in Sources */,
+				CE68CF8025E635BD00637708 /* ViewControllerTransitionDelegate.swift in Sources */,
 				CE14BCA225D12B5200C5F127 /* GroupsAvatarView.swift in Sources */,
 				CE7DAC4325D806BA006407C8 /* LoadingViewController.swift in Sources */,
 				CE14BCAC25D140AA00C5F127 /* LikeControlButton.swift in Sources */,
 				83B992E725BC217A00EFAC50 /* ViewController.swift in Sources */,
 				CE7C74E925C7E2BE00955EBF /* FriendsListViewController.swift in Sources */,
+				CE68CF9925E68FED00637708 /* CustomUiNavigationController.swift in Sources */,
 				CE7DAC3325D7E20C006407C8 /* ImageCollectionViewCell.swift in Sources */,
 				CE7DE1FA25D3D8170023C1F1 /* Constants.swift in Sources */,
 				CE14BC9425D110CE00C5F127 /* UserAvatarView.swift in Sources */,
 				CE7C750625C7F04000955EBF /* SearchGroupsTableViewController.swift in Sources */,
 				83B992E325BC217A00EFAC50 /* AppDelegate.swift in Sources */,
+				CE68CF8F25E63FC500637708 /* NavigationControllerAnimationPop.swift in Sources */,
 				CE7C750B25C7F0E300955EBF /* User.swift in Sources */,
 				CE5906A525E1299700CF67C2 /* FriendsPhotosCollectionViewCell.swift in Sources */,
 				CE7C751C25C7FE0100955EBF /* GroupsTableViewCell.swift in Sources */,
 				CE7C74F825C7EB0800955EBF /* GroupsTableViewController.swift in Sources */,
+				CE68CF7D25E6351400637708 /* ViewControlleSimpleDismiss.swift in Sources */,
+				CE68CF9D25E6977200637708 /* UINavigationControllerInteractiveTransition.swift in Sources */,
 				CE7C74ED25C7E41100955EBF /* FriendsTableViewCell.swift in Sources */,
 				CE7C74E525C7DD3800955EBF /* UITabViewController.swift in Sources */,
 			);

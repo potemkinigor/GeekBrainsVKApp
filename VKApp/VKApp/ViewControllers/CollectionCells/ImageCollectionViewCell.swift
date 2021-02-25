@@ -23,5 +23,4 @@ class ImageCollectionViewCell: UICollectionViewCell {
         animation.duration = 5
         self.layer.add(animation, forKey: nil)
     }
-
 }

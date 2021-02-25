@@ -14,7 +14,6 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
 
         newsCollectionView.register(UINib(nibName: "PostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "postCollectionCiewCellReusableIdentifyer")
-        
     }
 }
 
@@ -39,7 +38,7 @@ extension NewsViewController: UICollectionViewDataSource {
         cell.repostsCount.text = String(news[indexPath.row].repostsCount)
         cell.commentsCount.text = String(news[indexPath.row].commentsCount)
         cell.newsLikes.newsIndex = indexPath.row
-        
+    
         return cell
     }
     

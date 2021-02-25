@@ -135,7 +135,7 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "FriendsCollectionView")
-        vc.modalPresentationStyle = .automatic
+        vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)
