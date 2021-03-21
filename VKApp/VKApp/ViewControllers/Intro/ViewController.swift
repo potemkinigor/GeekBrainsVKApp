@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var registerButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let transitionDelegate = ViewControllerTransitionDelegate()
     var login = "Geekbrains"
     var password = "Geekbrains"
     
@@ -34,6 +35,9 @@ class ViewController: UIViewController {
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let loadingVC = storyBoard.instantiateViewController(identifier: "loadingVC")
+            
+            loadingVC.transitioningDelegate = transitionDelegate
+            
             self.present(loadingVC, animated: true, completion: nil)
             
             

@@ -22,6 +22,8 @@ class PostCollectionViewCell: UICollectionViewCell {
     var mediaDataArray: [UIImage] = []
     
     var delegate: SetOfImagesDelegate?
+    var transitionDelegate = ViewControllerTransitionDelegate()
+    var coordinatesArray: [(Int, Int, Int, Int)] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +42,10 @@ class PostCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 5
 
         mediaCollectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageReusableIdentifyer")
+        
+        self.isUserInteractionEnabled = true
+        
+        coordinatesArray.removeAll()
     }
     
     @objc func updateLikeButton () {
@@ -100,6 +106,9 @@ extension PostCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
         opacityAnimation.fromValue = 0
         opacityAnimation.toValue = 1
         opacityAnimation.duration = 3
+        
+        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+        coordinatesArray.append((Int(attributes?.frame.origin.x ?? 0 + collectionView.frame.origin.x), Int(attributes?.frame.origin.y ?? 0 + collectionView.frame.origin.y), Int(attributes?.frame.height ?? 0), Int(attributes?.frame.width ?? 0)))
 
         cell.layer.add(opacityAnimation, forKey: nil)
     }
@@ -126,13 +135,20 @@ extension PostCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
         let viewcontroller = storyboard.instantiateViewController(withIdentifier: "imageViewer")
         viewcontroller.modalPresentationStyle = .fullScreen
         
+        viewcontroller.transitioningDelegate = transitionDelegate
+        
+        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+        transitionDelegate.photoXPosition = Int(attributes?.frame.origin.x ?? 0)
+        transitionDelegate.photoYPosition = Int(attributes?.frame.origin.y ?? 0)
+        
         self.window?.rootViewController?.present(viewcontroller, animated: true, completion: nil)
         
         self.delegate = viewcontroller as? SetOfImagesDelegate
         
         delegate?.passedSetOfImages(mediaDataArray)
         delegate?.passedNumberOfPickedImage(indexPath.row)
-
+        delegate?.passedSetOfCoordinates(coordinatesArray)
+        
         
     }
     

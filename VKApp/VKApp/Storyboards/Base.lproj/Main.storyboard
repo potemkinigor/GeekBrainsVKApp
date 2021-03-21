@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6xP-0P-N53">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -188,7 +188,7 @@
         <!--Новости-->
         <scene sceneID="DVo-mm-OgA">
             <objects>
-                <navigationController id="AJd-cm-PZU" sceneMemberID="viewController">
+                <navigationController id="AJd-cm-PZU" customClass="CustomUiNavigationController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Новости" image="list.dash" catalog="system" id="M27-Wn-cnr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oQl-Nk-xev">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -351,7 +351,7 @@
         <!--Друзья-->
         <scene sceneID="O38-VA-JRk">
             <objects>
-                <navigationController id="sjU-Zb-UzJ" sceneMemberID="viewController">
+                <navigationController id="sjU-Zb-UzJ" customClass="CustomUiNavigationController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person.2" catalog="system" id="3uR-Ym-A6b"/>
                     <navigationItem key="navigationItem" id="mfF-od-yYu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nhd-hh-k5C">
@@ -369,7 +369,7 @@
         <!--Группы-->
         <scene sceneID="npJ-Td-wvP">
             <objects>
-                <navigationController id="KbR-q9-oAh" sceneMemberID="viewController">
+                <navigationController id="KbR-q9-oAh" customClass="CustomUiNavigationController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Группы" image="person.3.fill" catalog="system" id="5ei-FL-nH8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VXu-cT-Q2R">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -386,7 +386,7 @@
         <!--Друзья-->
         <scene sceneID="0Tw-CN-Cvc">
             <objects>
-                <viewController title="Друзья" id="sX1-GX-1Ao" customClass="FriendsListViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="friendsList" title="Друзья" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sX1-GX-1Ao" customClass="FriendsListViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8k7-wI-WTi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -456,7 +456,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="w7A-ze-QUo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w33-Fu-ijK">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w33-Fu-ijK">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
