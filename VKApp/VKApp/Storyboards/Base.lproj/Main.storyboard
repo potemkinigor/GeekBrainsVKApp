@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6xP-0P-N53">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cVE-H1-uZi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-562" y="124"/>
+            <point key="canvasLocation" x="-864" y="625"/>
         </scene>
         <!--Мои группы-->
         <scene sceneID="1Pw-jZ-RSV">
@@ -280,6 +280,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsk-eX-Gnu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3504" y="497"/>
+        </scene>
+        <!--Autorize View Controller-->
+        <scene sceneID="Pjs-gw-3G7">
+            <objects>
+                <viewController id="cVE-H1-uZi" customClass="AutorizeViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dfm-iy-puM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2p2-te-3Rw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6CI-8t-Voh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="2p2-te-3Rw" secondAttribute="bottom" id="Ry2-Ax-SMP"/>
+                            <constraint firstItem="2p2-te-3Rw" firstAttribute="trailing" secondItem="6CI-8t-Voh" secondAttribute="trailing" id="aSf-n9-sJb"/>
+                            <constraint firstItem="2p2-te-3Rw" firstAttribute="top" secondItem="Dfm-iy-puM" secondAttribute="top" id="qTn-bM-Pgv"/>
+                            <constraint firstItem="2p2-te-3Rw" firstAttribute="leading" secondItem="6CI-8t-Voh" secondAttribute="leading" id="vQd-cF-7ED"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webview" destination="2p2-te-3Rw" id="F36-xK-5Je"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfM-qS-3Qg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-875.36231884057975" y="-76.339285714285708"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="FzL-dI-VMS">
