@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="136" height="121"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eer-A2-mMi">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eer-A2-mMi">
                         <rect key="frame" x="0.0" y="0.0" width="136" height="121"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="121" id="Tc4-zi-Pic"/>
