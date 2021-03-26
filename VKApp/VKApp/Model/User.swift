@@ -17,18 +17,18 @@ class User {
     
     //MARK: - person properties
     
-    var id: Int
     var name: String
     var surname: String
     var avatar: UIImage
+    var images: [UIImage]
     
     //MARK: - init
 
-    init(id: Int, name: String, surname: String, avatar: UIImage) {
-        self.id = id
+    init(name: String, surname: String, avatar: UIImage, images: [UIImage]) {
         self.name = name
         self.surname = surname
         self.avatar = avatar
+        self.images = images
     }
     
 }

@@ -30,7 +30,9 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addGestureRecognezers()
+   
     }
     
     @IBAction func pushBack(_ sender: Any) {
@@ -133,15 +135,14 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
                                 animations: {
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: { [self] in
                                         self.photoImageView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                                        self.photoImageView.alpha = 0
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: { [self] in
                                         newImage.center.x = photoImageView.center.x
+//                                        photoImageView = newImage
                                     })
                                 },
                                 completion: {_ in
                                     self.photoImageView.image = self.imagesArray[self.numberOfCurrentPresentedPhoto]
-                                    self.photoImageView.alpha = 1
                                     self.photoImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
                                     newImage.removeFromSuperview()
                                 })
@@ -165,7 +166,6 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
                                 animations: {
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: { [self] in
                                         self.photoImageView.center.x -= photoImageView.frame.width
-                                        self.photoImageView.alpha = 0
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
                                         newImage.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -173,7 +173,6 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
                                 },
                                 completion: {_ in
                                     self.photoImageView.image = self.imagesArray[self.numberOfCurrentPresentedPhoto]
-                                    self.photoImageView.alpha = 1
                                     self.photoImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
                                     newImage.removeFromSuperview()
                                 })
@@ -183,9 +182,7 @@ class PhotoViewerViewController: UIViewController, SetOfImagesDelegate {
     func updatePhotoCoordinates() {
         guard let transitionDelegate = self.transitioningDelegate as? ViewControllerTransitionDelegate else { return }
         
-        if numberOfCurrentPresentedPhoto < coordinatesArray.count {
-            transitionDelegate.updatePhotoParameters(photoXPosition: coordinatesArray[numberOfCurrentPresentedPhoto].0, photoYPosition: coordinatesArray[numberOfCurrentPresentedPhoto].1, photoHeight: coordinatesArray[numberOfCurrentPresentedPhoto].2, photoWidth: coordinatesArray[numberOfCurrentPresentedPhoto].3)
-        }
+        transitionDelegate.updatePhotoParameters(photoXPosition: coordinatesArray[numberOfCurrentPresentedPhoto].0, photoYPosition: coordinatesArray[numberOfCurrentPresentedPhoto].1, photoHeight: coordinatesArray[numberOfCurrentPresentedPhoto].2, photoWidth: coordinatesArray[numberOfCurrentPresentedPhoto].3)
     }
 
 }

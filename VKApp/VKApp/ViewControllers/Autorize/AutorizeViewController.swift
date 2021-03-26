@@ -39,6 +39,7 @@ class AutorizeViewController: UIViewController {
         let request = URLRequest(url: url)
         
         webview.load(request)
+        
     }
 
 }
@@ -76,10 +77,11 @@ extension AutorizeViewController: WKNavigationDelegate {
         Session.shared.token = token
         Session.shared.userid = Int(userIdString)!
         
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let targetVC = storyBoard.instantiateViewController(identifier: "loadingVC")
-        targetVC.modalPresentationStyle = .fullScreen
-        self.present(targetVC, animated: true, completion: nil)
+        Session.shared.loadUserGroups()
+        Session.shared.loadUserFriends()
+        Session.shared.loadUserPhotos()
+        
+        Session.shared.loadFilteredGroups(filterText: "Котики")
         
         decisionHandler(.cancel)
     }
