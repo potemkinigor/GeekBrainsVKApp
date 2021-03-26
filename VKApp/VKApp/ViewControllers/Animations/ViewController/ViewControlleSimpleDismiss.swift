@@ -26,15 +26,11 @@ class ViewControlleSimpleDismiss: NSObject, UIViewControllerAnimatedTransitionin
         targetVC.view.layer.opacity = 0
         transitionContext.containerView.addSubview(targetVC.view)
         
-        UIView.animateKeyframes(withDuration: 5,
+        UIView.animateKeyframes(withDuration: 0.5,
                                 delay: 0,
                                 options:[],
                                 animations: {
-                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 5, animations: { [self] in
-                                        
-                                        print(self.photoXPosition)
-                                        print(self.photoYPosition)
-                                        
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: { [self] in
                                         sourceVC.view.center.x = CGFloat(self.photoXPosition)
                                         sourceVC.view.center.y = CGFloat(self.photoYPosition)
                                         sourceVC.view.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)

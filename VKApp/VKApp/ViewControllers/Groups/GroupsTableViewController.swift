@@ -7,20 +7,37 @@
 
 import UIKit
 
-var userGropusCount: Int = 0
 
-var userGroups: [Group] = []
 
 class GroupsTableViewController: UITableViewController {
-    
-    override func viewWillAppear(_ animated: Bool) {
-        updateView()
-    }
+
+    var networkManager = Session.shared
+    var userGroups: [Group] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadListOfGroupsFromNetwork()
+        
         tableView.register(UINib(nibName: "GroupsTableViewCell", bundle: nil), forCellReuseIdentifier: "groupsCell")
+    }
+    
+    //MARK: - Private functions
+    
+    private func loadListOfGroupsFromNetwork () {
+        
+        self.networkManager.loadUserGroups { (listOfGroups, imagesDict) in
+            listOfGroups.response?.items?.forEach({ (groups) in
+                let group = Group(id: groups.id!, name: groups.name!, avatar: imagesDict[groups.id!]!, userIn: (groups.isMember! != 0))
+                self.userGroups.append(group)
+            })
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }
+    
     }
 
     @IBAction func searchGroups(_ sender: Any) {
@@ -34,12 +51,10 @@ class GroupsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return userGroups.count
     }
 
@@ -54,26 +69,9 @@ class GroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        for element in groups {
-            if userGroups[indexPath.row].name == element.name {
-                element.userIn = false
-            }
-        }
+            
+        tableView.deselectRow(at: indexPath, animated: true)
 
-        updateView()
     }
     
-    func updateView () {
-        userGroups.removeAll()
-        
-        for element in groups {
-            if element.userIn {
-                userGroups.append(element)
-            }
-        }
-        
-        tableView.reloadData()
-    }
-
 }

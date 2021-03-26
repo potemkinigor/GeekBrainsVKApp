@@ -13,8 +13,6 @@ enum TypeOfPresentation {
     case showFiltered
 }
 
-
-
 class FriendsListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -23,14 +21,20 @@ class FriendsListViewController: UIViewController {
     
     var presentedListOfFriends: [[User]] = [[]]
     var presentedSectionsNames: [Character] = []
+    var friends: [User] = []
     
     var delegate: PassFriendInforamtionDelegate?
+    
+    let networkManager = Session.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prepareListOfFriendsToPresent(typeOfPresentation: .showAll)
+        //loadListOfFriendsFromNetwork()
         
+        print(friends)
+        
+        prepareListOfFriendsToPresent(typeOfPresentation: .showAll)
         
         tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "friendsReuseIdentifier")
         
@@ -61,7 +65,21 @@ class FriendsListViewController: UIViewController {
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
-    func prepareListOfFriendsToPresent(typeOfPresentation: TypeOfPresentation, searchText: String = "") {
+    func loadListOfFriendsFromNetwork () {
+        
+        DispatchQueue.global(qos: .background).async {
+            self.networkManager.loadUserFriends { [weak self] (friendsList, listOfAvatars) in
+                friendsList.response?.items!.forEach({ (friend) in
+                    self?.friends.append(User(id: friend.id!, name: friend.firstName!, surname: friend.lastName!, avatar: listOfAvatars[friend.id!]!))
+                })
+                
+                self?.prepareListOfFriendsToPresent(typeOfPresentation: .showAll)
+                
+            }
+        }
+    }
+    
+    private func prepareListOfFriendsToPresent(typeOfPresentation: TypeOfPresentation, searchText: String = "") {
         
         presentedListOfFriends.removeAll()
         presentedSectionsNames.removeAll()
@@ -69,6 +87,7 @@ class FriendsListViewController: UIViewController {
         var sectionsFriendsArray: [User] = []
         var nameContainsSearchText: Bool = false
         var surnameContainsSearchText: Bool = false
+        
         let sortedFriends = sortFriendsArray(friendsList: friends)
         
         (0..<alphabetArray.count).forEach { charIndex in
@@ -97,9 +116,12 @@ class FriendsListViewController: UIViewController {
             }
         }
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
-    func sortFriendsArray (friendsList: [User]) -> [User] {
+    private func sortFriendsArray (friendsList: [User]) -> [User] {
         let newArray = friends.sorted(by: { $0.surname < $1.surname })
         
         return newArray
@@ -125,7 +147,7 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendsReuseIdentifier", for: indexPath) as! FriendsTableViewCell
         
-        cell.userName.text = presentedListOfFriends[indexPath.section][indexPath.row].name + "" + presentedListOfFriends[indexPath.section][indexPath.row].surname
+        cell.userName.text = presentedListOfFriends[indexPath.section][indexPath.row].name + " " + presentedListOfFriends[indexPath.section][indexPath.row].surname
         
         cell.userAvatarView.avatarImage.image = presentedListOfFriends[indexPath.section][indexPath.row].avatar
 
@@ -133,10 +155,22 @@ extension FriendsListViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "FriendsCollectionView")
+        let vc = storyboard.instantiateViewController(identifier: "FriendsCollectionView") as FriendsPhotosViewController
         vc.modalPresentationStyle = .fullScreen
+        
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.networkManager.getUsersPhoto(ownerID: (self?.presentedListOfFriends[indexPath.section][indexPath.row].id)!) { (images) in
+                vc.userImages = images
+                vc.loadingIndicator.isHidden = true
+                DispatchQueue.main.async {
+                    vc.photosCollectionView.reloadData()
+                }
+            }
+        }
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -180,6 +214,8 @@ extension FriendsListViewController: UISearchBarDelegate {
     internal func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         prepareListOfFriendsToPresent(typeOfPresentation: .showAll)
         searchBar.text = ""
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
         self.tableView.reloadData()
     }
     

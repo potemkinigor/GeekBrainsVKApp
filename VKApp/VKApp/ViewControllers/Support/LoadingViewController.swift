@@ -9,12 +9,16 @@ import UIKit
 
 class LoadingViewController: UIViewController {
     
-    var animationView = UIView()
+    let networkManager = Session.shared
     let maskLayer = CAShapeLayer()
     let cloudIndicator = UIBezierPath()
     
+    var animationView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadFriends()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,9 +36,6 @@ class LoadingViewController: UIViewController {
         let sideTwo = rect.height * 0.3
         let arcRadius = sqrt(sideOne*sideOne + sideTwo*sideTwo)/3
         
-//        guard let drawContext = UIGraphicsGetCurrentContext() else { return }
-//        drawContext.setStrokeColor(UIColor.blue.cgColor)
-        
         cloudIndicator.addArc(withCenter: CGPoint(x: rect.width * 0.3, y: rect.height * 0.35), radius: arcRadius, startAngle: 135.degreesToRadians, endAngle: 320.degreesToRadians, clockwise: true)
         cloudIndicator.addArc(withCenter: CGPoint(x: rect.width * 0.5, y: rect.height * 0.35), radius: arcRadius, startAngle: 227.degreesToRadians, endAngle: 320.degreesToRadians, clockwise: true)
         cloudIndicator.addArc(withCenter: CGPoint(x: rect.width * 0.7, y: rect.height * 0.35), radius: arcRadius, startAngle: 227.degreesToRadians, endAngle: 45.degreesToRadians, clockwise: true)
@@ -46,16 +47,8 @@ class LoadingViewController: UIViewController {
         self.animationView.layer.mask = maskLayer
         self.animationView.layer.addSublayer(maskLayer)
         
-//        let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
-//        strokeAnimation.fromValue = 0
-//        strokeAnimation.toValue = 1
-//        strokeAnimation.duration = 10
-//        maskLayer.add(strokeAnimation, forKey: nil)
-        
         animateLoading()
-        
     }
-    
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -64,7 +57,9 @@ class LoadingViewController: UIViewController {
         
     }
     
-    func animateLoading () {
+    //MARK: - Private functions
+    
+    private func animateLoading () {
         let circleLayer = CAShapeLayer()
         circleLayer.backgroundColor = UIColor.red.cgColor
         circleLayer.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
@@ -80,6 +75,28 @@ class LoadingViewController: UIViewController {
         circleLayer.add(followPathAnimation, forKey: nil)
         
         maskLayer.addSublayer(circleLayer)
+    }
+    
+    private func loadFriends() {
+        
+        var listOfFriends: [User] = []
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let targetTabBarController = storyBoard.instantiateViewController(identifier: "TabBarController") as UITabViewController
+        
+        let targetNC = targetTabBarController.viewControllers![0] as! CustomUiNavigationController
+        let targetVC = targetNC.viewControllers[0] as! FriendsListViewController
+        
+    
+        DispatchQueue.global(qos: .background).async {
+            self.networkManager.loadUserFriends { [weak self] (friendsList, listOfAvatars) in
+                friendsList.response?.items!.forEach({ (friend) in
+                    listOfFriends.append(User(id: friend.id!, name: friend.firstName!, surname: friend.lastName!, avatar: listOfAvatars[friend.id!]!))
+                    targetVC.friends.append(User(id: friend.id!, name: friend.firstName!, surname: friend.lastName!, avatar: listOfAvatars[friend.id!]!))
+                })
+                self?.present(targetTabBarController, animated: true, completion: nil)
+            }
+        }
     }
 
 }
