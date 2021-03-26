@@ -10,19 +10,15 @@ import SwiftUI
 
 
 class Group {
+    var id: Int
     var name: String
-    var description: String
     var avatar: UIImage
     var userIn: Bool
-    var likes: Int
-    var liked: Bool
     
-    init(name: String, description: String, avatar: UIImage, userIn: Bool, likes: Int, liked: Bool) {
+    init(id: Int, name: String, avatar: UIImage, userIn: Bool) {
+        self.id = id
         self.name = name
-        self.description = description
         self.avatar = avatar
         self.userIn = userIn
-        self.likes = likes
-        self.liked = liked
     }
 }

@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 
-@IBDesignable class AlphabetFriendsSearch: UIControl {
+@IBDesignable
+class AlphabetFriendsSearch: UIControl {
     var buttons: [UIButton] = []
     var stackView: UIStackView!
     var selectedChar: Character = "А" {
