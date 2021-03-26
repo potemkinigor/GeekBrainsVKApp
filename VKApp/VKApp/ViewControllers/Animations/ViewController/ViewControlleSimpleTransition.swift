@@ -17,7 +17,7 @@ class ViewControlleSimplePresentation: NSObject, UIViewControllerAnimatedTransit
     var photoWidth = 0
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 5
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -44,7 +44,7 @@ class ViewControlleSimplePresentation: NSObject, UIViewControllerAnimatedTransit
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                                         targetVC.view.transform = CGAffineTransform(scaleX: 1, y: 1)
                                         targetVC.view.frame = destinationViewFrame
-                                        targetVC.view.backgroundColor = .black
+                                        targetVC.view.backgroundColor = .gray
                                         targetVC.view.layer.opacity = 1
                                     })
                                 },

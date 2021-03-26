@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  ViewController.swift
 //  VKApp
 //
 //  Created by Igor Potemkin on 23.01.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class ViewController: UIViewController {
 
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var registerButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let transitionDelegate = ViewControllerTransitionDelegate()
     var login = "Geekbrains"
     var password = "Geekbrains"
     
@@ -34,7 +35,9 @@ class LoginViewController: UIViewController {
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let loadingVC = storyBoard.instantiateViewController(identifier: "loadingVC")
-
+            
+            loadingVC.transitioningDelegate = transitionDelegate
+            
             self.present(loadingVC, animated: true, completion: nil)
             
             
@@ -48,6 +51,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    
     @IBAction func registerButtonTap(_ sender: Any) {
         hideKeyboard()
     }
@@ -58,25 +62,25 @@ class LoginViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
-    @IBAction func registerViaVKButtonPush(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loadingVC = storyBoard.instantiateViewController(identifier: "autorizeVCviaVK")
-        loadingVC.modalPresentationStyle = .fullScreen
-        self.present(loadingVC, animated: true, completion: nil)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let hideKeyboardGesture = UIGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
         
+        
         enterButton.layer.cornerRadius = 10
         enterButton.layer.shadowRadius = 3
         registerButton.layer.cornerRadius = 10
         enterButton.layer.shadowRadius = 3
+        
+        
+        
+        
+        
+        
     }
+
 
 }
 

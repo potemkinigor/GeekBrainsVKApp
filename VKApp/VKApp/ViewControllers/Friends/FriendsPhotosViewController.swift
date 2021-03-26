@@ -11,13 +11,10 @@ import UIKit
 class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,  PassFriendInforamtionDelegate {
     
     @IBOutlet var photosCollectionView: UICollectionView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
     var transitionDelegate = ViewControllerTransitionDelegate()
     var friend: User!
     var delegate: SetOfImagesDelegate!
     var coordinatesArray: [(Int, Int, Int, Int)] = []
-    var userImages: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +27,7 @@ class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, U
         coordinatesArray.removeAll()
 
     }
+    
     
     func passedFriendData(_ friendPassed: User) {
         friend = friendPassed
@@ -45,16 +43,18 @@ class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, U
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return userImages.count
+        return friend.images.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendPhotoReusableCell", for: indexPath) as! FriendsPhotosCollectionViewCell
         
-        cell.friendImage.image = userImages[indexPath.row]
+        cell.friendImage.image = friend.images[indexPath.row]
         
         let attributes = collectionView.layoutAttributesForItem(at: indexPath)
         coordinatesArray.append((Int(attributes?.frame.origin.x ?? 0), Int(attributes?.frame.origin.y ?? 0), Int(attributes?.frame.height ?? 0), Int(attributes?.frame.width ?? 0)))
+        
+        print(coordinatesArray)
     
         return cell
     }
@@ -78,10 +78,9 @@ class FriendsPhotosViewController: UIViewController, UICollectionViewDelegate, U
         
         self.delegate = viewcontroller as? SetOfImagesDelegate
         
-        delegate?.passedSetOfImages(userImages)
+        delegate?.passedSetOfImages(friend.images)
         delegate?.passedNumberOfPickedImage(indexPath.row)
         delegate?.passedSetOfCoordinates(coordinatesArray)
-        print(coordinatesArray.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
